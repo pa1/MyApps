@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <dependencySets>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <includes>
+                <include>org.apache.synapse:synapse-package-skeleton</include>
+            </includes>
+            <unpack>true</unpack>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <includes>
+                <include>*:*:*:jar</include>
+            </includes>
+            <outputDirectory>lib</outputDirectory>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <includes>
+                <include>*:*:*:mar</include>
+            </includes>
+            <excludes>
+                <exclude>org.apache.synapse:synapse-module</exclude>
+            </excludes>
+            <outputDirectory>repository/modules</outputDirectory>
+            <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
+        </dependencySet>
+    </dependencySets>
+    <fileSets>
+        <fileSet>
+            <directory>repository</directory>
+        </fileSet>
+    </fileSets>
+    <files>
+        <file>
+            <source>conf/log4j.properties</source>
+            <outputDirectory>lib</outputDirectory>
+        </file>
+    </files>
+</assembly>
